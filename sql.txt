@@ -1,0 +1,35 @@
+Quan ly ban hang
+
+CREATE DATABASE quan_ly_ban_hang;
+USE quan_ly_ban_hang;
+CREATE TABLE users(
+     ID int NOT NULL AUTO_INCREMENT,
+     UserName varchar(20) NOT NULL,
+     Password varchar(20) NOT NULL,
+     Name varchar(20),
+     Email varchar(20),
+     Role int (1) DEFAULT 0,
+     PRIMARY KEY (ID)
+     );
+CREATE TABLE product(
+	ID int NOT NULL AUTO_INCREMENT,
+	Name varchar(30),
+	Quantity int,
+	Price int,
+	PRIMARY KEY (ID)
+	);
+
+INSERT INTO quan_ly_ban_hang.product (`ID`, `Name`, `Quantity`, `Price`) 
+VALUES (NULL, 'giay1', '30', '500'),
+(NULL, 'ao1', '15', '100'),
+(NULL, 'tui2', '30', '200');
+
+SELECT * FROM product WHERE ID = 4;
+
+UPDATE product
+SET Quantity = 700
+WHERE ID = 4;
+
+UPDATE product
+SET Quantity = (SELECT Quantity FROM product WHERE ID = 4) - 1
+WHERE ID = 4;
